@@ -2,12 +2,12 @@ boolean upkey, downkey, leftkey, rightkey, spacekey;
 PImage shipimg;
 Ship myShip;
 ArrayList<GameObject> myGameObjects; //GameObject = class myGameObjects = Arraylist
-int objectSize = 120;
+
 
 void setup() {
   size (800, 600);
   shipimg = loadImage("fighter.png");
-  shipimg.resize(objectSize/2, objectSize/2);
+  shipimg.resize(60, 60);
   imageMode(CENTER);
   myShip = new Ship(); //instantiation --> to make
   myGameObjects = new ArrayList<GameObject>();
