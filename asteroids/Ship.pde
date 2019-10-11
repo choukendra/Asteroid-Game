@@ -28,7 +28,7 @@ class Ship extends GameObject {
    
     if (upkey) velocity.add(direction);
     if (downkey) velocity.sub(direction);
-    if (leftkey) direction.rotate(radians(-2));
+    if (leftkey) direction.rotate(-radians(2));
     if (rightkey) direction.rotate(radians(2));
     if (spacekey) myGameObjects.add(new Bullet());
 
