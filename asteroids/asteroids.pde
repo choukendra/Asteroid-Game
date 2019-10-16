@@ -3,35 +3,37 @@ PImage shipimg;
 Ship myShip;
 ArrayList<GameObject> myGameObjects; //GameObject = class myGameObjects = Arraylist
 
+int mode, points, hs;
+final int intro = 0;
+final int game = 1;
+final int gameover = 2;
 
 void setup() {
-  size (800, 600);
+  //println("hello world");
+  size (800, 600, P2D);
+  hs = 0;
+  imageMode(CENTER);
+  textAlign(CENTER, CENTER);
   shipimg = loadImage("fighter.png");
   shipimg.resize(60, 60);
-  imageMode(CENTER);
   myShip = new Ship(); //instantiation --> to make
   myGameObjects = new ArrayList<GameObject>();
-  myGameObjects.add(myShip);
-  myGameObjects.add( new Asteroid() );
-  myGameObjects.add( new Asteroid() );
-  myGameObjects.add( new Asteroid() );
+  //myGameObjects.add(myShip);
+  myGameObjects.add( new Asteroid()); // <--default constructor if don't set perameter
+  myGameObjects.add( new Asteroid());
+  myGameObjects.add( new Asteroid());
 }
 
 void draw() {
-  background(0);
-  //myShip.show();
-  //myShip.act();
-
-  int i = 0;
-  while (i < myGameObjects.size()) {
-    GameObject currentObject = myGameObjects.get(i); 
-    currentObject.show();
-    currentObject.act();
-    //if (currentObject.alive() == false){
-    //  myGameObjects.remove(i);
-    //  i--;
-    //}
-    i++;
+  //println("hello again");
+  if (mode == intro) {
+    intro();
+  } else if (mode == game) {
+    game();
+  } else if (mode == gameover) {
+    gameover();
+  } else {
+    println("Mode error Mode was " + mode);
   }
 }
 
@@ -49,4 +51,13 @@ void keyReleased() {
   if (keyCode == LEFT) leftkey = false;
   if (keyCode == RIGHT) rightkey = false;
   if (key ==' ') spacekey = false;
+}
+
+void mouseReleased() {
+  if (mode == intro) {
+    mode = game;
+  } else if (mode == gameover) {
+    mode = intro;
+  }
+  
 }

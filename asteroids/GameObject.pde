@@ -2,27 +2,23 @@
 abstract class GameObject {
 
   int lives;
+  int size;
   PVector location;
   PVector velocity;
-  boolean alive;
+
 
   GameObject() {
-    lives = 1;
   }
 
   void show() {
   }
 
   void act() {
-    if (location.y < -objectSize) location.y = height + objectSize;
-    if (location.y > height + objectSize) location.y = -objectSize; 
-    if (location.x < -objectSize) location.x = height + objectSize;
-    if (location.x > width + objectSize) location.x = -objectSize;
-
     location.add(velocity); //like x = x + vx and y = y + vy
-  }
 
-  //boolean alive() {
-  //  return true;
-  //}
+    if (location.y < -60) location.y = height + 60;
+    if (location.y > height + 60) location.y = -60; 
+    if (location.x < -60) location.x = width + 60;
+    if (location.x > width + 60) location.x = -60;
+  }
 }
