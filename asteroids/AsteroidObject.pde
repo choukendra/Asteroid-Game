@@ -35,15 +35,38 @@ class Asteroid extends GameObject {
           lives = 0;
           myObj.lives = 0;
           points++;
+
+//          myGameObjects.add(new Particle());
+//          myGameObjects.add(new Particle());
+//          myGameObjects.add(new Particle());
+          //int p = 0;
+          //while (p < 50) {
+          //  myGameObjects.add(new Particle());
+          //  GameObject myP = myGameObjects.get(p);
+          //  myP.show();
+          //  myP.act();
+          //}
+          //}
+          //          //for (int p = 0; p < myGameObjects.size(); p++) {
+          //  GameObject myP = myGameObjects.get(p);
+          //  if (myP instanceof Particle) {
+          //    p = 50;
+          //    myP.show();
+          //    myP.act();
+          //  } else {
+          //  //  myP.lives = 0;
+          //  }
+          //}
+
           if (size > 10) {
             myGameObjects.add(new Asteroid(size/2, location.x, location.y));
             myGameObjects.add(new Asteroid(size/2, location.x, location.y));
           }
         }
       }
+
+
+      if (size < 10 && lives == 0) points = points + 10;
     }
-    
-    if (size < 10 && lives == 0) points = points + 10;
-          
   }
 }

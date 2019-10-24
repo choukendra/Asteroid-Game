@@ -2,13 +2,15 @@ void intro() {
   background(0);
   textSize(60);
   fill(255);
-  text("ASTERIOD", width/2, height/2);
+  text("ASTEROID", width/2, height/2);
 
   myShip = new Ship(); //instantiation --> to make
+  //myUfo = new Ufo();
   myGameObjects = new ArrayList<GameObject>();
   myGameObjects.add( new Asteroid()); 
   myGameObjects.add( new Asteroid());
   myGameObjects.add( new Asteroid());
+  myGameObjects.add( new Ufo());
 
   points = 0;
   myShip.lives = 3;
