@@ -3,8 +3,6 @@ void game() {
   myShip.show();
   myShip.act();
 
-
-
   fill(255);
   textSize(20);
   text("LIVES: " + myShip.lives, width - 100, 30);
@@ -25,15 +23,4 @@ void game() {
     mode = gameover;
   }
   
-
-  //if (myUfo.lives >= 1) {
-  //  myUfo.show();
-  //  myUfo.act();
-  //}
-  int ufoTimer = 0;
-  ufoTimer++;
-  while (ufoTimer >= 600) {
-    myGameObjects.add(new Ufo());
-    ufoTimer = 0;
-  }
 }

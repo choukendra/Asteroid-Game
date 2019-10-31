@@ -2,13 +2,17 @@ class Ufo extends GameObject {
 
   //1. Instance Variables
   PVector direction;
+  int spawnUfo;
   int t;
   int r;
   float temp_radians;
+  int timer;
 
   //2. Constructor(s)
   Ufo() {
     lives = 1;
+    timer = 75;
+
     t = 0;
     size = 60;
     r = int(random(0, 3));
@@ -34,50 +38,42 @@ class Ufo extends GameObject {
     velocity.rotate(random(TWO_PI));
 
     temp_radians = 0;
-    //PVector.angleBetween(myShip.location, location);
-    //direction.rotate(temp_radians);
+
+    // introduce delay here
+    //long previous = millis();
+    //while (millis() - previous <= 1000) {
+    //}
   }
 
   //3. Behaviour Functions
   void show() {
-    pushMatrix();
-    //direction.x = myShip.location.x;
-    //direction.y = myShip.location.y;
-
-    //print(location);
-    //print(myShip.location);
-    //print(degrees(PVector.angleBetween(myShip.location, location)));
-    //direction.rotate(PVector.angleBetween(myShip.location, location) - temp_radians);
-    //temp_radians = PVector.angleBetween(myShip.location, location);
-
-    translate(location.x, location.y);
-    rotate(direction.heading());
-    image(ufoimg, 0, 0);
-    popMatrix();
+    noTint();
+    if (timer <= 0) { 
+      pushMatrix();
+      translate(location.x, location.y);
+      rotate(direction.heading());
+      image(ufoimg, 0, 0);
+      popMatrix();
+    }
   }
 
   void act() {
+    
+   //if(lives >= 1) {
+    
+   //}else {
+   // ufost.pause();
+   //}
+    timer--;
     location.add(velocity);
     if (location.y < -60 || location.y > height + 60 || location.x < -60 || location.x > width + 60) {
-      r = int(random(0, 3));
-      location = new PVector (r, r);
-      if (r == 0) {
-        location.x = -60;
-        location.y = int(random(height));
-      } else if (r == 1) {
-        location.x = width + 60;
-        location.y = int(random(height));
-      } else if (r == 2) {
-        location.y = -60;
-        location.x = int(random(width));
-      } else if (r == 3) {
-        location.y = height + 60;
-        location.x = int(random(width));
-      }
+      lives--;
+      myGameObjects.add(new Ufo());
     }
 
+
     t++;
-    if (t >= 180) { 
+    if (t >= 230) { 
       myGameObjects.add(new UBullet(location.x, location.y));
       t = 0;
     }
@@ -87,7 +83,7 @@ class Ufo extends GameObject {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           lives--;
           myObj.lives--;
-          points = points + 50;
+          points = points + 50;  
           myGameObjects.add(new Ufo());
         }
       }

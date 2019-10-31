@@ -1,6 +1,7 @@
 class Asteroid extends GameObject {
-
+int p;
   Asteroid() {
+    p = 0;
     lives = 1;
     size = 100;
     location = new PVector(random(width), random(height)); 
@@ -33,30 +34,14 @@ class Asteroid extends GameObject {
       if (myObj instanceof Bullet) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           lives = 0;
+          while (p < 50) {
+            myGameObjects.add(new Particle(location.x, location.y));
+            p++;
+          }
           myObj.lives = 0;
           points++;
 
-//          myGameObjects.add(new Particle());
-//          myGameObjects.add(new Particle());
-//          myGameObjects.add(new Particle());
-          //int p = 0;
-          //while (p < 50) {
-          //  myGameObjects.add(new Particle());
-          //  GameObject myP = myGameObjects.get(p);
-          //  myP.show();
-          //  myP.act();
-          //}
-          //}
-          //          //for (int p = 0; p < myGameObjects.size(); p++) {
-          //  GameObject myP = myGameObjects.get(p);
-          //  if (myP instanceof Particle) {
-          //    p = 50;
-          //    myP.show();
-          //    myP.act();
-          //  } else {
-          //  //  myP.lives = 0;
-          //  }
-          //}
+
 
           if (size > 10) {
             myGameObjects.add(new Asteroid(size/2, location.x, location.y));

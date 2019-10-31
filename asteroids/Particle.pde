@@ -1,23 +1,24 @@
-//class Particle extends GameObject {
-//  int timer;
-//  PVector direction;
-//  Particle () {
-//    location = new PVector (location.x, location.y);
-//    velocity = new PVector (myShip.direction.x, myShip.direction.y);
-//    velocity.setMag(5);
-//    lives = 1;
-//    timer = 30;
-//    size = 3;
-//  }
-//  void show() {
-//    noStroke();
-//    ellipse(location.x, location.y, size, size);
-//  }
-//  void act() {
-//    super.act();
-//    timer--;
-//    if (timer == 0) {
-//      lives = 0;
-//    }
-//  }
-//}
+class Particle extends GameObject {
+  int timer;
+  PVector direction;
+  Particle (float _locationx, float _locationy) {
+    location = new PVector (_locationx, _locationy);
+    velocity = new PVector (random(0, width), random(0, height));
+    velocity.setMag (random(0.3, 1.7));
+    lives = 1;
+    timer = 135;
+    size = 2;
+  }
+  void show() {
+    noStroke();
+    fill (#B9BCA9);
+    ellipse(location.x, location.y, size, size);
+  }
+  void act() {
+    super.act();
+    timer--;
+    if (timer == 0) {
+      lives = 0;
+    }
+  }
+}

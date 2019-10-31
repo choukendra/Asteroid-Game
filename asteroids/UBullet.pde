@@ -29,29 +29,14 @@ class UBullet extends GameObject {
   }
 
   void act() {
-    super.act();
-    //myUfo.direction.x = myShip.location.x;
-    //myUfo.direction.y = myShip.location.y;
-
-    //t++;
-    //    if (t == 10 && myUfo.direction.x != myShip.direction.x && myUfo.direction.y != myShip.direction.y) {
-    //      myUfo.direction.rotate(myShip.location.x);
-    //      myUfo.direction.rotate(myShip.location.y);
-    //      t = 0;
-    //    }
-
-
-
+    location.add(velocity);
+    if (location.y < -size || location.y > height + size || location.x < - size || location.x > width + size) {
+      lives--;
+    }
     timer--;
     if (timer == 0) {
-      timer = 90;
+      timer = 75;
       lives = 0;
-    }else{
- 
-      
     }
-
-
-
   }
 }

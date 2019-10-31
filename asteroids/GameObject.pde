@@ -15,7 +15,6 @@ abstract class GameObject {
 
   void act() {
     location.add(velocity); //like x = x + vx and y = y + vy
-
     if (location.y < -60) location.y = height + 60;
     if (location.y > height + 60) location.y = -60; 
     if (location.x < -60) location.x = width + 60;

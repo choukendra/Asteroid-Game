@@ -11,9 +11,9 @@ void intro() {
   myGameObjects.add( new Asteroid());
   myGameObjects.add( new Asteroid());
   myGameObjects.add( new Ufo());
-
+  
   points = 0;
-  myShip.lives = 3;
+  myShip.lives = 5;
   myShip.shotTimer = 0;
   myShip.threshold = 30;
   myShip.size = 60;
