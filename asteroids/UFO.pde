@@ -73,7 +73,7 @@ class Ufo extends GameObject {
 
 
     t++;
-    if (t >= 230) { 
+    if (t >= 60*2) { 
       myGameObjects.add(new UBullet(location.x, location.y));
       t = 0;
     }

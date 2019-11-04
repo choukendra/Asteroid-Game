@@ -27,7 +27,7 @@ class Ship extends GameObject {
     translate(location.x, location.y);
     rotate(direction.heading());
     if (respawn != 0) {
-      tint(0, 153, 204, 126);
+      tint (80, 206, 219, 178);
     } else {
       noTint();
     }
@@ -83,13 +83,20 @@ class Ship extends GameObject {
       //  fire.rate(1);
       //fire.rewind();
       myGameObjects.add(new Bullet());
-
       shotTimer = 0;
     }
 
     if (respawn != 0) {
       w++;
-      if (w != 180) {
+      noFill();
+      stroke(255);
+      strokeWeight(5);
+      arc(location.x, location.y, 70, 70, -PI/2, (-2*PI) + (0.065*w));
+
+      if (w <= 180 && w >= 60) {
+        size = -100;
+        shotTimer = 0;
+      } else if ( w <= 60) {
         location.x = width/2;
         location.y = height/2;
         velocity = new PVector(0, 0);
@@ -99,9 +106,8 @@ class Ship extends GameObject {
       } else {
         respawn = 0;
         size = 60;
-        velocity = new PVector(0, 0);
-        direction = new PVector(0, -0.1);
         w = 0;
+        noStroke();
       }
     }
   }

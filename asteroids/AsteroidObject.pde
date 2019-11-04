@@ -34,7 +34,7 @@ int p;
       if (myObj instanceof Bullet) {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           lives = 0;
-          while (p < 50) {
+          while (p < 60) {
             myGameObjects.add(new Particle(location.x, location.y));
             p++;
           }
