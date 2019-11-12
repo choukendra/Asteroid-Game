@@ -8,6 +8,7 @@ import ddf.minim.ugens.*;
 Minim minim;
 AudioPlayer fire;
 AudioPlayer ufost;
+AudioPlayer bang;
 
 boolean upkey, downkey, leftkey, rightkey, spacekey;
 PFont font;
@@ -20,6 +21,7 @@ int mode, points, hs;
 final int intro = 0;
 final int game = 1;
 final int gameover = 2;
+final int win = 3;
 
 void setup() {
   //println("hello world");
@@ -44,7 +46,9 @@ void setup() {
 
   myGameObjects.add( new Ufo());
 
-
+  minim = new Minim(this);
+  fire = minim.loadFile("fire.wav");
+  bang = minim.loadFile("bang.wav");
 }
 
 void draw() {
@@ -55,7 +59,9 @@ void draw() {
     game();
   } else if (mode == gameover) {
     gameover();
-  } else {
+  } else if (mode == win){
+   win(); 
+  }else {
     println("Mode error Mode was " + mode);
   }
 }
@@ -80,6 +86,8 @@ void mouseReleased() {
   if (mode == intro) {
     mode = game;
   } else if (mode == gameover) {
+    mode = intro;
+  }else if (mode == win) {
     mode = intro;
   }
 }

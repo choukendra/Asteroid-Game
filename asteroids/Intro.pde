@@ -5,13 +5,12 @@ void intro() {
   text("ASTEROID", width/2, height/2);
 
   myShip = new Ship(); //instantiation --> to make
-  //myUfo = new Ufo();
   myGameObjects = new ArrayList<GameObject>();
   myGameObjects.add( new Asteroid()); 
   myGameObjects.add( new Asteroid());
   myGameObjects.add( new Asteroid());
   myGameObjects.add( new Ufo());
-  
+
   points = 0;
   myShip.lives = 5;
   myShip.shotTimer = 0;

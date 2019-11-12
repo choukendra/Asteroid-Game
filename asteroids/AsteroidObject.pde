@@ -1,5 +1,5 @@
 class Asteroid extends GameObject {
-int p;
+  int p;
   Asteroid() {
     p = 0;
     lives = 1;
@@ -28,7 +28,9 @@ int p;
 
   void act() {
     super.act();
-
+    if (points >= 525) {
+      mode = win;
+    }
     for (int i = 0; i < myGameObjects.size(); i++) {
       GameObject myObj = myGameObjects.get(i);
       if (myObj instanceof Bullet) {
@@ -38,10 +40,15 @@ int p;
             myGameObjects.add(new Particle(location.x, location.y));
             p++;
           }
+
+          bang.play();
+          bang.rewind();
           myObj.lives = 0;
-          points++;
-
-
+          if (size > 10) {
+            points++;
+          } else {
+            points = points + 10;
+          }
 
           if (size > 10) {
             myGameObjects.add(new Asteroid(size/2, location.x, location.y));
@@ -49,9 +56,6 @@ int p;
           }
         }
       }
-
-
-      if (size < 10 && lives == 0) points = points + 10;
     }
   }
 }

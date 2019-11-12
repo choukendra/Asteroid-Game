@@ -38,11 +38,6 @@ class Ufo extends GameObject {
     velocity.rotate(random(TWO_PI));
 
     temp_radians = 0;
-
-    // introduce delay here
-    //long previous = millis();
-    //while (millis() - previous <= 1000) {
-    //}
   }
 
   //3. Behaviour Functions
@@ -58,12 +53,12 @@ class Ufo extends GameObject {
   }
 
   void act() {
-    
-   //if(lives >= 1) {
-    
-   //}else {
-   // ufost.pause();
-   //}
+
+    //if(lives >= 1) {
+
+    //}else {
+    // ufost.pause();
+    //}
     timer--;
     location.add(velocity);
     if (location.y < -60 || location.y > height + 60 || location.x < -60 || location.x > width + 60) {
@@ -83,7 +78,7 @@ class Ufo extends GameObject {
         if (dist(myObj.location.x, myObj.location.y, location.x, location.y) < size/2 + myObj.size/2) {
           lives--;
           myObj.lives--;
-          points = points + 50;  
+          points = points + 100;  
           myGameObjects.add(new Ufo());
         }
       }
